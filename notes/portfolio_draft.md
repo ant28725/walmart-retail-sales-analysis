@@ -325,3 +325,135 @@ The strongest promotional insight is that markdowns appear to increase sales int
 To prepare the Walmart analysis for Tableau, I created a SQL view called `walmart_dashboard_view`. This view keeps the original weekly sales records while adding calculated fields for store efficiency, profit efficiency, markdown activity, holiday status, store size category, profit margin category, and sales record status.
 
 Creating these fields in SQL keeps the Tableau dashboard cleaner and ensures that the same business logic is used consistently across visuals and filters.
+
+# Walmart Retail Sales Performance Analysis
+
+## Overview
+
+This project analyzes Walmart retail sales data across 45 stores and 81 departments to identify sales performance patterns, store efficiency differences, profitability drivers, markdown impact, and holiday demand behavior.
+
+The main business question was:
+
+**Which stores, departments, and time periods drive the strongest sales and profitability, and where are there signs of underperformance?**
+
+## Business Problem
+
+Retail businesses need to understand which stores generate the most value, which departments drive profitability, how seasonal periods affect demand, and whether promotional markdowns improve business performance.
+
+Total sales alone can be misleading because larger stores naturally generate more revenue. This analysis uses SQL and Tableau to evaluate performance using a combination of sales volume, profit, profit margin, sales per square foot, profit per square foot, holiday impact, and markdown effectiveness.
+
+## Tools Used
+
+- PostgreSQL
+- SQL
+- Tableau Public
+- VS Code
+- GitHub
+
+## Dataset
+
+The dataset contains 421,570 weekly sales records across 45 Walmart stores and 81 departments from February 5, 2010 through October 26, 2012.
+
+Fields include store number, department, store type, store size, date, weekly sales, holiday flag, temperature, fuel price, CPI, unemployment, markdown values, estimated profit, cost of goods sold, and profit margin.
+
+## Analysis Process
+
+I structured the analysis into five phases:
+
+1. **Sales Performance Overview**  
+   I analyzed total sales, profit, store count, department count, yearly trends, monthly patterns, store type performance, and top/bottom stores by sales.
+
+2. **Store Efficiency**  
+   I evaluated stores using sales per square foot and profit per square foot to identify stores that outperformed or underperformed relative to physical size.
+
+3. **Profitability Analysis**  
+   I compared stores and departments by total profit, profit margin, and profit efficiency to determine whether the highest-sales stores were also the strongest profit performers.
+
+4. **Markdown and Holiday Impact**  
+   I analyzed holiday vs non-holiday performance and evaluated whether markdown activity improved sales, profit, or margin outcomes.
+
+5. **Recommendations**  
+   I translated the findings into business recommendations focused on store evaluation, underperformance review, department strategy, and promotional decision-making.
+
+## Key Findings
+
+### 1. Walmart sales totaled $6.74 billion across the dataset.
+
+The dataset contained 421,570 weekly sales records across 45 stores and 81 departments. Total sales were $6.74 billion, with estimated profit of $1.49 billion and an overall profit margin of 22.07%.
+
+### 2. Type A stores dominated total sales, but not necessarily efficiency.
+
+Type A stores generated the highest total sales at $4.33 billion and had the highest average weekly sales per record. This was partly driven by store size, as Type A stores were much larger on average than Type B and Type C stores.
+
+However, store efficiency analysis showed that smaller Type B and Type C stores could outperform larger Type A stores when measured by sales per square foot and profit per square foot.
+
+### 3. Store 10 stood out as a high-performing efficiency benchmark.
+
+Store 10, a Type B store, generated $271.62 million in total sales and $58.24 million in estimated profit. It also produced $2,146.97 in sales per square foot and $460.32 in profit per square foot.
+
+This made Store 10 a strong performer across both total revenue and efficiency metrics.
+
+### 4. Store efficiency varied widely across locations.
+
+Average sales per square foot across all stores were $1,214.19, but performance ranged from $618.19 to $2,205.58 per square foot.
+
+High-efficiency stores averaged $1,990.36 in sales per square foot, while low-efficiency stores averaged only $768.90. This means high-efficiency stores generated roughly 2.59 times more sales per square foot than low-efficiency stores.
+
+### 5. Profit efficiency showed a similar performance gap.
+
+High profit-efficiency stores averaged $472.99 in profit per square foot, while low profit-efficiency stores averaged $155.77. This means high profit-efficiency stores generated roughly 3.04 times more profit per square foot than low profit-efficiency stores.
+
+Store 43 had the highest profit per square foot at $554.27, while Store 9 had the lowest at $133.83.
+
+### 6. Department 92 was the strongest overall profit driver.
+
+Department 92 generated the highest estimated profit at $136.79 million and had a strong profit margin of 28.27%. Department 91 had the highest margin among meaningful-volume departments at 30.80%.
+
+This showed that department performance should be evaluated using both total profit and profit margin.
+
+### 7. Holiday weeks increased sales intensity but reduced margin.
+
+Holiday weeks had higher average weekly sales per record at $17,035.82 compared to $15,901.45 for non-holiday weeks. However, holiday weeks had much higher markdown activity and a lower profit margin of 19.86%, compared to 22.25% for non-holiday weeks.
+
+### 8. Markdown-heavy periods increased sales but reduced profitability.
+
+High-markdown records had the highest average weekly sales at $19,971.10, but the lowest profit margin at only 7.55%. No-markdown records had a much stronger profit margin of 27.82%.
+
+Correlation analysis supported this finding. Markdown activity had only a weak positive correlation with weekly sales at 0.0652, but a stronger negative correlation with profit margin at -0.5750.
+
+## Recommendations
+
+### 1. Evaluate stores using both total sales and efficiency metrics.
+
+Total sales alone can be misleading because larger stores naturally generate more revenue. Store performance should be evaluated using sales, profit, sales per square foot, and profit per square foot.
+
+### 2. Review large low-efficiency stores for potential underperformance.
+
+Stores such as Store 32, Store 28, and Store 9 should be reviewed for possible issues related to local market demand, department mix, layout, staffing, inventory strategy, or promotional effectiveness.
+
+### 3. Use high-efficiency stores as performance benchmarks.
+
+Stores 43, 10, 42, 37, and 23 were strong performers based on sales per square foot. Store 10 is especially useful as a benchmark because it ranked highly in both total sales and efficiency metrics.
+
+### 4. Protect high-profit and high-margin departments.
+
+Department 92 should be prioritized as a major profit driver, while Department 91 should be monitored as a high-margin department. Department strategy should consider both total profit and profit margin.
+
+### 5. Reevaluate markdown strategy using margin impact.
+
+Markdown-heavy records generated higher average sales but substantially weaker margins. Markdown campaigns should be evaluated by profit lift, margin impact, and inventory objectives rather than sales lift alone.
+
+### 6. Plan holiday promotions around profitability.
+
+Holiday periods increased sales intensity but lowered profit margin, especially when markdown activity was high. Holiday promotions should be monitored using both sales and profitability KPIs.
+
+## Limitations
+
+This dataset includes estimated profit, COGS, and margin fields, so profitability findings depend on those assumptions. The dataset also ends in October 2012, making 2012 a partial year that should not be directly compared to complete years without context.
+
+The dataset does not include detailed store operating costs, labor costs, rent, inventory stockouts, local competition, customer traffic, or actual promotion campaign details. These fields would improve future store performance and markdown effectiveness analysis.
+
+## Links
+
+- Tableau Dashboard: [PASTE_TABLEAU_LINK_HERE](https://public.tableau.com/app/profile/anton.jackson3576/viz/Walmartdashboard_17726474850320/Dashboard1)
+- GitHub Repository: https://github.com/ant28725/walmart-retail-sales-analysis
